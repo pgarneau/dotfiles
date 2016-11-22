@@ -42,8 +42,6 @@ if has("win16") || has("win32") || has("win64")
   python from powerline.vim import setup as powerline_setup
   python powerline_setup()
   python del powerline_setup
-
-  set guifont=Inconsolata\ for\ Powerline:h12
 endif
 
 " All of your Plugins must be added before the following line
@@ -68,6 +66,8 @@ set clipboard=unnamed "Share clipboard with OS
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+set guifont=Inconsolata\ for\ Powerline:h15
 
 "Enable backspace
 set backspace=indent,eol,start

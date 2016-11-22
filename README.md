@@ -28,6 +28,7 @@
 	- Go to https://github.com/Lokaltog/powerline-fonts and download the Inconsolata.otf file
 	- Double click on the downloaded otf file and install it to windows
 	- As long as you have the _vimrc from this repo, your powerline should now be working
+	- For Mac OS X, follow instructions at https://powerline.readthedocs.io/en/latest/installation/osx.html
 
 5. Setup YouCompleteMe
 	- Change directory to where YouCompleteMe is installed:
@@ -38,4 +39,5 @@
 	  computer. If they are installed, you can run:
       python install.py --all
 	- You should now be all set
+	- For Mac OS X, make sure you have Cmake installed (brew install cmake), then go into the YouCompleteMe directory ~/.vim/bundle/YouCompleteMe and run "./install.py"
 
