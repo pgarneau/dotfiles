@@ -67,7 +67,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-set guifont=Inconsolata\ for\ Powerline:h15
+if has("win16") || has("win32") || has("win64")
+	set guifont=Inconsolata\ for\ Powerline:h12
+else
+	set guifont=Inconsolata\ for\ Powerline:h15
+endif
 
 "Enable backspace
 set backspace=indent,eol,start
