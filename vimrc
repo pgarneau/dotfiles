@@ -5,12 +5,8 @@ if has("win16") || has("win32") || has("win64")
   if &shell=~#'bash$'
     set shell=$COMSPEC " sets shell to correct path for cmd.exe
   endif
-endif
-
-" set the runtime path to include Vundle and initialize
-if has ("win16") || has("win32") || has("win64")
   set rtp+=~/Vim/vimfiles/bundle/Vundle.vim
-  call vundle#begin('~/Vim/vimfiles/bundle/')
+  call vundle#begin('~/Vim/vimfiles/bundle/') 
 elseif has ("unix")
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin()

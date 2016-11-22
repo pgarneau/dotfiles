@@ -5,11 +5,12 @@ if has("win16") || has("win32") || has("win64")
   if &shell=~#'bash$'
     set shell=$COMSPEC " sets shell to correct path for cmd.exe
   endif
+  set rtp+=~/Vim/vimfiles/bundle/Vundle.vim
+  call vundle#begin('~/Vim/vimfiles/bundle/') 
+elseif has ("unix")
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
 endif
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/Vim/vimfiles/bundle/Vundle.vim
-call vundle#begin('~/Vim/vimfiles/bundle/')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -25,6 +26,8 @@ Bundle 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 " PEP8 Checking
 Plugin 'nvie/vim-flake8'
+" Material Hybrid
+Plugin 'kristijanhusak/vim-hybrid-material'
 " Solarized color-scheme
 Plugin 'altercation/vim-colors-solarized'
 " File Browsing Tree
@@ -111,7 +114,7 @@ syntax on
 
 "Color-Scheme
 set background=dark
-colorscheme solarized
+colorscheme hybrid_material
 
 "NerdTree Settings
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -119,6 +122,4 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 "Basic Settings
 set nu "Line numbers
 set clipboard=unnamed "Share clipboard with OS
-
-
 
