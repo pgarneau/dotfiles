@@ -55,15 +55,33 @@ filetype plugin indent on    " required
 
 "Settings
 
+"Basic Settings
+set nu "Line numbers
+set clipboard=unnamed "Share clipboard with OS
+
+"Enable backspace
+set backspace=indent,eol,start
+
 "Splitting Windows (:sv for vertical split, :vs for horizontal split)
 set splitbelow
 set splitright
+
+"Visual Mode Tabbing
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+"Visual Mode Yanking (Copy) and keep selection
+vmap y y<Esc>gv
 
 "Split Navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"Tab Navigation
+nnoremap <C-Left> <Esc>:tabprev<CR>
+nnoremap <C-Right> <Esc>:tabnext<CR>
 
 "Enable folding
 set foldmethod=indent
@@ -84,7 +102,7 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 " Indentation for other file types
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
@@ -117,9 +135,11 @@ set background=dark
 colorscheme hybrid_material
 
 "NerdTree Settings
+nnoremap <S-Space> <Nop>
+nnoremap <C-Space> <Nop>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let NERDTreeMapOpenInTab='<C-Space>' "Open in new tab
+let NERDTreeMapActivateNode='<Space>' "Open / Go-to directory
+let NERDTreeMapOpenVSplit='<S-Space>' "Open with vertical split
 
-"Basic Settings
-set nu "Line numbers
-set clipboard=unnamed "Share clipboard with OS
 
