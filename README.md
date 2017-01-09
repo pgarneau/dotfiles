@@ -12,6 +12,8 @@
 	- Inside \Vim, clear the contents of \Vim\vimfiles and create a directory called "bundle"
 	- Cut and paste the directory "autoload" from \Vim\vim80 to \Vim\vimfiles
 	- Use the _vimrc provided in the repository in \Vim
+	- Make sure to run the command with the appropriate directory:
+		"git clone https://github.com/VundleVim/Vundle.vim.git /c/Users/pgarneau/Vim/v imfiles/bundle/Vundle.vim"
 
 3. Setup Vundle
 	- As long as you followed the previous steps exactly, Vundle should work out of the box.
