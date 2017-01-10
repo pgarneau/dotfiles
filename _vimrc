@@ -30,12 +30,20 @@ Plugin 'nvie/vim-flake8'
 Plugin 'kristijanhusak/vim-hybrid-material'
 " Solarized color-scheme
 Plugin 'altercation/vim-colors-solarized'
+" PaperColor color-scheme
+Plugin 'NLKNguyen/papercolor-theme'
+"Python syntax highlighting
+Plugin 'hdima/python-syntax'
 " File Browsing Tree
 Plugin 'scrooloose/nerdtree'
 " NerdTree Tabs
 Plugin 'jistr/vim-nerdtree-tabs'
+" Git-Gprep
+Plugin 'tjennings/git-grep-vim'
 " Super search plugin
 Plugin 'kien/ctrlp.vim'
+" Vim-Fugitive Plugin
+Plugin 'tpope/vim-fugitive'
 " Powerline plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 if has("win16") || has("win32") || has("win64")
@@ -107,22 +115,20 @@ nnoremap <space> za
 
 "Add PEP8 indentation for python
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
+	\ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=80 |
+	\ set colorcolumn=80 |
+    \ set expandtab |
+    \ set autoindent |
     \ set fileformat=unix
 
 " Indentation for other file types
 au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
-"Flag unnecessary whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 
 
 "UTF8 Support
 set encoding=utf-8
@@ -147,6 +153,12 @@ syntax on
 "Color-Scheme
 set background=dark
 colorscheme hybrid_material
+
+"Material-Color-Scheme Option
+let g:enable_bold_font = 1
+
+"Ggrep key mappings
+autocmd QuickFixCmdPost *grep* cwindow
 
 "NerdTree Settings
 nnoremap <S-Space> <Nop>

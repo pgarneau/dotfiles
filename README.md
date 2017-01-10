@@ -43,3 +43,17 @@
 	- You should now be all set
 	- For Mac OS X, make sure you have Cmake installed (brew install cmake), then go into the YouCompleteMe directory ~/.vim/bundle/YouCompleteMe and run "./install.py"
 
+6. Setup Flake8
+	- Make sure to run pip install flake8 before trying to use the plugin in Vim
+	- (MAC) Change Max Line length by going to ~/.config/flake8 and write:
+		[flake8]
+		max-line-length = 120
+	- (WINDOWS) Change Max Line length by going to ~/.flake8 or create it if needed and write:
+		[flake8]
+		max-line-length = 120
+
+7. Setup Grep search
+	- Follow steps at:
+		http://www.vim.org/scripts/script.php?script_id=311
+		
+
