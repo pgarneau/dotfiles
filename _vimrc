@@ -74,6 +74,7 @@ set clipboard=unnamed "Share clipboard with OS
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set noswapfile
 
 if has("win16") || has("win32") || has("win64")
 	set guifont=Inconsolata\ for\ Powerline:h12
@@ -119,7 +120,7 @@ au BufNewFile,BufRead *.py
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=80 |
-	\ set colorcolumn=80 |
+	\ set colorcolumn=80,90 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
@@ -135,16 +136,6 @@ set encoding=utf-8
 
 "YouCompleteMe Settings
 let g:ycm_autoclose_preview_window_after_completion=1
-
-"python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
 
 "Syntax checking enabling
 let python_highlight_all=1
@@ -167,5 +158,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeMapOpenInTab='<C-Space>' "Open in new tab
 let NERDTreeMapActivateNode='<Space>' "Open / Go-to directory
 let NERDTreeMapOpenVSplit='<S-Space>' "Open with vertical split
+let NERDTreeShowHidden=1
 
 
