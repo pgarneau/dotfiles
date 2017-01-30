@@ -89,6 +89,10 @@ set backspace=indent,eol,start
 set splitbelow
 set splitright
 
+"Enable commenting multiple lines
+vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
 "Visual Mode Tabbing
 vmap <Tab> >gv
 vmap <S-Tab> <gv
