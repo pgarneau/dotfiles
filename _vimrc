@@ -42,6 +42,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tjennings/git-grep-vim'
 " Super search plugin
 Plugin 'kien/ctrlp.vim'
+" VirtualEnv
+Plugin 'jmcantrell/vim-virtualenv'
 " Vim-Fugitive Plugin
 Plugin 'tpope/vim-fugitive'
 " Powerline plugin
@@ -129,6 +131,11 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
+" Robot framework format
+au BufNewFile,BufRead *.robot
+	\ set colorcolumn=32 |
+	\ set tabstop=4 |
+
 " Indentation for other file types
 au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
     \ set tabstop=2 |
@@ -163,5 +170,3 @@ let NERDTreeMapOpenInTab='<C-Space>' "Open in new tab
 let NERDTreeMapActivateNode='<Space>' "Open / Go-to directory
 let NERDTreeMapOpenVSplit='<S-Space>' "Open with vertical split
 let NERDTreeShowHidden=1
-
-
