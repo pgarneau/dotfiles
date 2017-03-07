@@ -46,6 +46,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 " Vim-Fugitive Plugin
 Plugin 'tpope/vim-fugitive'
+" Robot Framework Plugin
+Plugin 'mfukar/robotframework-vim'
 " Powerline plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 if has("win16") || has("win32") || has("win64")
@@ -77,6 +79,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noswapfile
+set guicursor+=a:blinkon0
 
 if has("win16") || has("win32") || has("win64")
 	set guifont=Inconsolata\ for\ Powerline:h12
@@ -132,9 +135,12 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 " Robot framework format
+let g:robot_syntax_for_txt=1
 au BufNewFile,BufRead *.robot
-	\ set colorcolumn=32 |
+    \ imap <Tab> <space><space><space> |
 	\ set tabstop=4 |
+	\ set shiftwidth=4 |
+	\ set colorcolumn=90 |
 
 " Indentation for other file types
 au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
