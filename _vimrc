@@ -21,7 +21,7 @@ Plugin 'tmhedberg/SimpylFold'
 " Auto-Indentation plugin
 Plugin 'vim-scripts/indentpython.vim'
 " Auto-complete plugin
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
 " Syntax Checking / Highlighting
 Plugin 'scrooloose/syntastic'
 " PEP8 Checking
@@ -48,6 +48,8 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'tpope/vim-fugitive'
 " Robot Framework Plugin
 Plugin 'mfukar/robotframework-vim'
+" Go vim plugin
+Plugin 'fatih/vim-go'
 " Powerline plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 if has("win16") || has("win32") || has("win64")
@@ -115,6 +117,52 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-Left> <Esc>:tabprev<CR>
 nnoremap <C-Right> <Esc>:tabnext<CR>
 
+"NeoComplete Settings
+" Disable AutoCompletePop
+let g:acp_enableAtStartup = 0
+" Use neocomplete
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary
+let g:neocomplete#sources#dictionary#dictionaries = {
+	\ 'default' : '',
+	\ 'vimshell' : $HOME.'/.vimshell_hist',
+	\ 'scheme' : $HOME.'/.gosh_completions'
+		\ }
+
+" Define keyword
+if !exists('g:neocomplete#keyword_patterns')
+	let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+let g:neocomplete#enable_auto_select = 1
+
 "Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -151,9 +199,6 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
 "UTF8 Support
 set encoding=utf-8
 
-"YouCompleteMe Settings
-let g:ycm_autoclose_preview_window_after_completion=1
-
 "Syntax checking enabling
 let python_highlight_all=1
 syntax on
@@ -167,6 +212,14 @@ let g:enable_bold_font = 1
 
 "Ggrep key mappings
 autocmd QuickFixCmdPost *grep* cwindow
+
+"Vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 "NerdTree Settings
 nnoremap <S-Space> <Nop>
