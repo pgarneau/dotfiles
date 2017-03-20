@@ -118,6 +118,8 @@ nnoremap <C-Left> <Esc>:tabprev<CR>
 nnoremap <C-Right> <Esc>:tabnext<CR>
 
 "NeoComplete Settings
+" Disable preview Windows
+set completeopt-=preview
 " Disable AutoCompletePop
 let g:acp_enableAtStartup = 0
 " Use neocomplete
@@ -162,6 +164,18 @@ inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
 let g:neocomplete#enable_auto_select = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
 
 "Enable folding
 set foldmethod=indent
