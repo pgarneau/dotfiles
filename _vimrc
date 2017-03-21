@@ -20,10 +20,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 " Auto-Indentation plugin
 Plugin 'vim-scripts/indentpython.vim'
-" Auto-complete plugin
-Plugin 'Shougo/neocomplete.vim'
-" Python auto-completion
-Plugin 'davidhalter/jedi-vim'
+" YouCompleteMe Autocomplete
+Bundle 'Valloric/YouCompleteMe'
 " Syntax Checking / Highlighting
 Plugin 'scrooloose/syntastic'
 " PEP8 Checking
@@ -119,77 +117,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-Left> <Esc>:tabprev<CR>
 nnoremap <C-Right> <Esc>:tabnext<CR>
 
-"NeoComplete Settings
-" Disable preview Windows
-set completeopt-=preview
-" Disable AutoCompletePop
-let g:acp_enableAtStartup = 0
-" Use neocomplete
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" Define dictionary
-let g:neocomplete#sources#dictionary#dictionaries = {
-	\ 'default' : '',
-	\ 'vimshell' : $HOME.'/.vimshell_hist',
-	\ 'scheme' : $HOME.'/.gosh_completions'
-		\ }
-
-" Define keyword
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Jedi-Vim Support
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-endif
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:neocomplete#force_omni_input_patterns.python =
-\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" alternative pattern: '\h\w*\|[^. \t]\.\w*'
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
 "Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -225,6 +152,9 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
 
 "UTF8 Support
 set encoding=utf-8
+
+"YouCompleteMe Settings
+let g:ycm_autoclose_preview_window_after_completion=1
 
 "Syntax checking enabling
 let python_highlight_all=1
