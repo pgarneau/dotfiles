@@ -50,6 +50,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mfukar/robotframework-vim'
 " Go vim plugin
 Plugin 'fatih/vim-go'
+" Html / CSS plugin
+Plugin 'othree/html5.vim'
 " Powerline plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 if has("win16") || has("win32") || has("win64")
@@ -61,6 +63,7 @@ endif
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+syntax enable
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -128,7 +131,7 @@ nnoremap <space> za
 "Add PEP8 indentation for python
 au BufNewFile,BufRead *.py
 	\ set tabstop=4 |
-    \ set softtabstop=4 |
+	\ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=80 |
 	\ set colorcolumn=80,90 |
@@ -137,15 +140,27 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 " Robot framework format
-let g:robot_syntax_for_txt=1
 au BufNewFile,BufRead *.robot
-    \ imap <Tab> <space><space><space> |
+	\ let g:robot_syntax_for_txt=1 |
+	\ imap <Tab> <space><space><space> |
 	\ set tabstop=4 |
 	\ set shiftwidth=4 |
 	\ set colorcolumn=90 |
 
+" HTML format
+au BufNewFile,BufRead *.html
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+" Javascript format
+au BufNewFile,BufRead *.js
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+	
 " Indentation for other file types
-au BufNewFile,BufRead *.js, *.html, *.css, *.lua, *.xml
+au BufNewFile,BufRead *.css, *.lua, *.xml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 
