@@ -52,6 +52,8 @@ Plugin 'mfukar/robotframework-vim'
 Plugin 'fatih/vim-go'
 " Html / CSS plugin
 Plugin 'othree/html5.vim'
+" HTML Match Tag
+Plugin 'gregsexton/MatchTag'
 " Powerline plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 if has("win16") || has("win32") || has("win64")
@@ -159,8 +161,26 @@ au BufNewFile,BufRead *.js
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 	
+" Yaml format
+au BufNewFile,BufRead *.yaml
+	\ set tabstop=2 |
+	\ set softtabstop=2 |
+	\ set shiftwidth=2 |
+
+" CSS format
+au BufNewFile,BufRead *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+" SCSS format
+au BufNewFile,BufRead *.scss
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
 " Indentation for other file types
-au BufNewFile,BufRead *.css, *.lua, *.xml
+au BufNewFile,BufRead *.lua, *.xml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 
