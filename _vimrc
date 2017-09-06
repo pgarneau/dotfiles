@@ -91,7 +91,7 @@ set guicursor+=a:blinkon0
 if has("win16") || has("win32") || has("win64")
 	set guifont=Inconsolata\ for\ Powerline:h12
 else
-	set guifont=Inconsolata\ for\ Powerline:h15
+	set guifont=Inconsolata\ for\ Powerline:h14
 endif
 
 "Enable backspace
