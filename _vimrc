@@ -175,3 +175,5 @@ let NERDTreeShowHidden=1
 runtime /python/.vimrc_python_config
 " Golang
 runtime /go/.vimrc_go_config
+
+autocmd VimResized * redraw!
