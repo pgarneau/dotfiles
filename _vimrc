@@ -16,24 +16,12 @@ endif
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" Code folding plugin
-Plugin 'tmhedberg/SimpylFold'
-" Auto-Indentation plugin
-Plugin 'vim-scripts/indentpython.vim'
-" YouCompleteMe Autocomplete
-Bundle 'Valloric/YouCompleteMe'
-" Syntax Checking / Highlighting
-Plugin 'scrooloose/syntastic'
-" PEP8 Checking
-Plugin 'nvie/vim-flake8'
 " Material Hybrid
 Plugin 'kristijanhusak/vim-hybrid-material'
 " Solarized color-scheme
 Plugin 'altercation/vim-colors-solarized'
 " PaperColor color-scheme
 Plugin 'NLKNguyen/papercolor-theme'
-"Python syntax highlighting
-Plugin 'hdima/python-syntax'
 " File Browsing Tree
 Plugin 'scrooloose/nerdtree'
 " NerdTree Tabs
@@ -42,14 +30,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tjennings/git-grep-vim'
 " Super search plugin
 Plugin 'kien/ctrlp.vim'
-" VirtualEnv
-Plugin 'jmcantrell/vim-virtualenv'
 " Vim-Fugitive Plugin
 Plugin 'tpope/vim-fugitive'
-" Robot Framework Plugin
-Plugin 'mfukar/robotframework-vim'
-" Go vim plugin
-Plugin 'fatih/vim-go'
 " Html / CSS plugin
 Plugin 'othree/html5.vim'
 " HTML Match Tag
@@ -61,6 +43,14 @@ if has("win16") || has("win32") || has("win64")
   python powerline_setup()
   python del powerline_setup
 endif
+
+" Source language specific plugins
+
+" Python
+runtime /python/.vimrc_python_plugin
+
+" Golang
+" source go/.vimrc_go_plugin
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -122,33 +112,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-Left> <Esc>:tabprev<CR>
 nnoremap <C-Right> <Esc>:tabnext<CR>
 
-"Enable folding
-set foldmethod=indent
-set foldlevel=99
-let g:SimpylFold_docstring_preview=1
-
-"Enable code folding with spacebar
-nnoremap <space> za
-
-"Add PEP8 indentation for python
-au BufNewFile,BufRead *.py
-	\ set tabstop=4 |
-	\ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=80 |
-	\ set colorcolumn=80,90 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-" Robot framework format
-au BufNewFile,BufRead *.robot
-	\ let g:robot_syntax_for_txt=1 |
-	\ imap <Tab> <space><space><space> |
-	\ set tabstop=4 |
-	\ set shiftwidth=4 |
-	\ set colorcolumn=90 |
-
 " HTML format
 au BufNewFile,BufRead *.html
     \ set tabstop=2 |
@@ -188,13 +151,6 @@ au BufNewFile,BufRead *.lua, *.xml
 "UTF8 Support
 set encoding=utf-8
 
-"YouCompleteMe Settings
-let g:ycm_autoclose_preview_window_after_completion=1
-
-"Syntax checking enabling
-let python_highlight_all=1
-syntax on
-
 "Color-Scheme
 set background=dark
 colorscheme hybrid_material
@@ -205,14 +161,6 @@ let g:enable_bold_font = 1
 "Ggrep key mappings
 autocmd QuickFixCmdPost *grep* cwindow
 
-"Vim-go settings
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
 "NerdTree Settings
 nnoremap <S-Space> <Nop>
 nnoremap <C-Space> <Nop>
@@ -221,3 +169,9 @@ let NERDTreeMapOpenInTab='<C-Space>' "Open in new tab
 let NERDTreeMapActivateNode='<Space>' "Open / Go-to directory
 let NERDTreeMapOpenVSplit='<S-Space>' "Open with vertical split
 let NERDTreeShowHidden=1
+
+" Source language specific options
+" Python
+runtime /python/.vimrc_python_config
+" Golang
+runtime /go/.vimrc_go_config
