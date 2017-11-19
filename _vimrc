@@ -54,6 +54,8 @@ Plugin 'fatih/vim-go'
 Plugin 'othree/html5.vim'
 " HTML Match Tag
 Plugin 'gregsexton/MatchTag'
+" LATEX PLUGIN
+Plugin 'lervag/vimtex'
 " Powerline plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 if has("win16") || has("win32") || has("win64")
@@ -184,6 +186,9 @@ au BufNewFile,BufRead *.lua, *.xml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 
+
+" LaTex Detection
+let g:tex_flavor = 'latex'
 
 "UTF8 Support
 set encoding=utf-8
