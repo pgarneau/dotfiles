@@ -1,0 +1,26 @@
+" Enable Code Folding
+set foldmethod=indent
+set foldlevel=99
+let g:SimpylFold_docstring_preview=1
+
+" Enable Code Folding With Spacebar
+nnoremap <space> za
+
+" Add PEP8 indentation for python
+au BufNewFile,BufRead *.py
+	\ set tabstop=4 |
+	\ set softtabstop=4 |
+	\ set shiftwidth=4 |
+	\ set textwidth=80 |
+	\ set colorcolumn=80,90 |
+	\ set expandtab |
+	\ set autoindent |
+	\ set fileformat=unix
+
+" YouCompleteMe Settings
+let g:ycm_autoclose_preview_window_after_completion=1
+
+" Syntax checking enabling
+let python_highlight_all=1
+syntax on
+

@@ -1,0 +1,13 @@
+" Code folding plugin
+Plugin 'tmhedberg/SimpylFold'
+" Auto-Identation plugin
+Plugin 'vim-scripts/indentpython.vim'
+" YouCompleteMe Autocomplete
+Plugin 'Valloric/YouCompleteMe'
+" Syntax Checking / Highlighting
+Plugin 'scrooloose/syntastic'
+" PEP8 Checking
+Plugin 'nvie/vim-flake8'
+" Python Syntax Highlighting
+Plugin 'hdima/python-syntax'
+
