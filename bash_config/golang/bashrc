@@ -1,6 +1,12 @@
-# Add the golang executable to path (default path)
-export PATH=$PATH:/usr/local/go/bin
-
 # Set the GOPATH env variable (go workspace directory)
 # This is the setup with windows WSL
-export GOPATH=/c/dev/go
+export GOPATH=/c/Users/phil/dev/go
+
+# Add the golang executable to path (default path)
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# Add protobuf executable to path
+export PATH=$PATH:/usr/local/protobuf/bin
+
+# Add Goland executable to path
+export PATH=$PATH:/usr/local/GoLand-2017.3/bin
