@@ -1,0 +1,2 @@
+config_dir=$( dirname "${BASH_SOURCE[0]}" )
+echo ${config_dir}
