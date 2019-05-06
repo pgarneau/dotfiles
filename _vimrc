@@ -38,18 +38,14 @@ Plugin 'othree/html5.vim'
 Plugin 'gregsexton/MatchTag'
 " LATEX PLUGIN
 Plugin 'lervag/vimtex'
-" Powerline plugin
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-if has("win16") || has("win32") || has("win64")
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
-endif
+" Air-Line
+Plugin 'vim-airline/vim-airline'
+
 
 " Source language specific plugins
 
 " Python
-runtime /python/.vimrc_python_plugin
+"runtime /python/.vimrc_python_plugin
 
 " Golang
 " source go/.vimrc_go_plugin
@@ -80,11 +76,7 @@ set shiftwidth=4
 set noswapfile
 set guicursor+=a:blinkon0
 
-if has("win16") || has("win32") || has("win64")
-	set guifont=Inconsolata\ for\ Powerline:h12
-else
-	set guifont=Inconsolata\ for\ Powerline:h14
-endif
+let g:airline_powerline_fonts = 1
 
 "Enable backspace
 set backspace=indent,eol,start
@@ -176,9 +168,9 @@ let NERDTreeMapOpenVSplit='<S-Space>' "Open with vertical split
 let NERDTreeShowHidden=1
 
 " Source language specific options
-" Python
-runtime /python/.vimrc_python_config
-" Golang
+" Python (Uncomment to use)
+" runtime /python/.vimrc_python_config
+" Golang (Uncomment to use)
 runtime /go/.vimrc_go_config
 
 autocmd VimResized * redraw!

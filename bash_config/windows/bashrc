@@ -1,0 +1,9 @@
+# Sets the display for WSL Xming display
+export DISPLAY=:0
+
+# Binds the WSL C drive to /c to work with Docker
+sudo mount --bind /mnt/c /c
+cd /c/Users/phil
+
+# Binds Docker CE running in WSL to the Docker Daemon running on Windows
+export DOCKER_HOST=tcp://0.0.0.0:2375
